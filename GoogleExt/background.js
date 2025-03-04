@@ -11,7 +11,7 @@
 
 
 
-  chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (changeInfo.status === "complete" && tab.url.includes("google.com/search")) {
         chrome.scripting.executeScript({
             target: { tabId: tabId },

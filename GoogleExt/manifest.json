@@ -9,6 +9,7 @@
     "scripting",
     "activeTab"
   ],
+  "host_permissions": ["https://www.google.com/*"],
   "background": {
     "service_worker": "background.js"
   },
@@ -20,7 +21,7 @@
   ],
   "web_accessible_resources": [
     {
-        "resources": ["icons/sharingan.png"],
+        "resources": ["icons/sharingan.png", "icons/stop-button"],
         "matches": ["<all_urls>"]
     }
   ],
