@@ -21,7 +21,10 @@
   ],
   "web_accessible_resources": [
     {
-        "resources": ["icons/sharingan.png", "icons/stop-button"],
+        "resources": [
+          "icons/sharingan.png",
+          "icons/stop-button.png"
+        ],
         "matches": ["<all_urls>"]
     }
   ],

@@ -9,17 +9,24 @@ function createNarutoButtons() {
   if (!document.getElementById("naruto-button")) {
       const button = document.createElement('button');
       button.innerText = "Trigger";
+
+      button.style.display = 'flex';
+      button.style.alignItems = 'center';  // 垂直居中
+      button.style.justifyContent = 'center';  // 水平居中
+
       button.id = "naruto-button";
       button.style.position = 'absolute';
       button.style.top = '150px';
       button.style.left = '50%';
+      button.style.width = '60px';
+      button.style.height = '60px';
       button.style.transform = 'translateX(-50%)';
       button.style.padding = '10px';
       button.style.fontSize = '16px';
       button.style.cursor = 'pointer';
       button.style.backgroundColor = 'orange';
       button.style.border = 'none';
-      button.style.borderRadius = '5px';
+      button.style.borderRadius = '50%';
       button.style.zIndex = '9999';
 
       document.body.appendChild(button);
@@ -33,7 +40,7 @@ function createNarutoButtons() {
       const stopBtn = document.createElement('button');
       stopBtn.id = "stop-button";
       stopBtn.style.position = 'absolute';
-      stopBtn.style.top = '200px';
+      stopBtn.style.top = '150px';
       stopBtn.style.left = '60%';
       stopBtn.style.transform = 'translateX(-50%)';
       stopBtn.style.width = '60px';
@@ -45,6 +52,7 @@ function createNarutoButtons() {
       stopBtn.style.backgroundColor = 'orange';
 
       const iconUrl = chrome.runtime.getURL('icons/stop-button.png');
+      console.log(iconUrl);
       stopBtn.style.backgroundImage = `url("${iconUrl}")`;
       stopBtn.style.backgroundSize = '50%';
       stopBtn.style.backgroundRepeat = 'no-repeat';
