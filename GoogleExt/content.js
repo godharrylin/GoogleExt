@@ -6,6 +6,7 @@ if (!window.hasNarutoScriptLoaded) {
 
 // 創建按鈕
 function createNarutoButtons() {
+  //  開始動畫按鈕
   if (!document.getElementById("naruto-button")) {
       const button = document.createElement('button');
       button.innerText = "Trigger";
@@ -52,7 +53,6 @@ function createNarutoButtons() {
       stopBtn.style.backgroundColor = 'orange';
 
       const iconUrl = chrome.runtime.getURL('icons/stop-button.png');
-      console.log(iconUrl);
       stopBtn.style.backgroundImage = `url("${iconUrl}")`;
       stopBtn.style.backgroundSize = '50%';
       stopBtn.style.backgroundRepeat = 'no-repeat';
