@@ -2,6 +2,7 @@
 if (!window.hasNarutoScriptLoaded) {
   window.hasNarutoScriptLoaded = true; 
   createNarutoButtons();
+  
 }
 
 // 創建按鈕
@@ -32,7 +33,7 @@ function createNarutoButtons() {
 
       document.body.appendChild(button);
       button.addEventListener('click', function() {
-          // startNarutoAnimation();
+          startNarutoAnimation();
           startUsagiGIF();
       });
   }
@@ -101,23 +102,16 @@ if (!document.getElementById("naruto-style")) {
 
 //  創建 Usagi GIF  (嵌入)
 function startUsagiGIF(){
-  const usagi = document.createElement('div');
-  usagi.class = "tenor-gif-embed";
-  usagi.setAttribute('data-postid', '17442942489029498034');  // 這裡填入想要顯示的 Tenor GIF 的 ID
-  usagi.setAttribute('data-share-method', 'host');
-  usagi.setAttribute('data-aspect-ration', '1');
-  usagi.setAttribute('data-width', '100%');
-
-  const link = document.createElement('a');
-  link.href ='https://tenor.com/view/chiikawa-usagi-gif-17442942489029498034';  // 這裡是 GIF 的鏈接
-  link.innerText = 'Chiikawa Usagi Sticker';
-  usagi.appendChild(link);
-
-  const script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.async = true;
-  script.src = 'https://tenor.com/embed.js'; // 引入 Tenor GIF 相關的腳本
-  usagi.appendChild(script);
+  const usagi = document.createElement('iframe');
+  usagi.id = "usagiGIF";
+  usagi.src = "https://tenor.com/embed/17442942489029498034";
+  usagi.width = 128;
+  usagi.height = 128;
+  usagi.style.border = "none";
+  usagi.style.position = "absolute";
+  usagi.style.top = "200px";
+  usagi.style.left = "70%";
+  usagi.style.transform = "translate(-50%, -50%)";
 
   document.body.appendChild(usagi);
 }

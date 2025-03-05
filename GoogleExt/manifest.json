@@ -1,5 +1,5 @@
 
-  {
+{
   "manifest_version": 3,
   "name": "Naruto Google Easter Egg",
   "version": "1.0",
@@ -23,7 +23,8 @@
     {
         "resources": [
           "icons/sharingan.png",
-          "icons/stop-button.png"
+          "icons/stop-button.png",
+          "scripts/embed.js"
         ],
         "matches": ["<all_urls>"]
     }
