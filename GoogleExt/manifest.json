@@ -23,7 +23,10 @@
     {
         "resources": [
           "icons/sharingan.png",
-          "icons/stop-button.png"
+          "icons/stop-button.png",
+          "icons/start-button.png",
+          "icons/usagi/shime34.png",
+          "icons/usagi/shime35.png"
         ],
         "matches": ["<all_urls>"]
     }

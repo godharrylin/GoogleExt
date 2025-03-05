@@ -20,18 +20,3 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
         // .catch(err => console.error("Script execution error:", err));
     }
 });
-
-
-// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-//     if (message.action === "loadEmbedScript") {
-//         console.log("正在載入 embed.js...");
-//         chrome.scripting.executeScript({
-//             target: { tabId: sender.tab.id },
-//             files: ["scripts/embed.js"]
-//         }).then(() => {
-//             console.log("embed.js 成功執行！");
-//         }).catch((error) => {
-//             console.error("embed.js 執行失敗：", error);
-//         });
-//     }
-// });

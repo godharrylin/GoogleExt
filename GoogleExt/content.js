@@ -38,6 +38,37 @@ function createButtons() {
       });
   }
 
+  //  Usagi走路按鈕
+  if(!document.getElementById("usagi-button")){
+    const walkBtn = document.createElement('button');
+    walkBtn.id = 'usagi-button';
+    walkBtn.cursor = 'pointer';
+    walkBtn.style.position = 'absolute';
+    walkBtn.style.top = '150px';
+    walkBtn.style.left = '40%';
+    walkBtn.style.transform = 'translateX(-50%)';
+    walkBtn.style.width = '60px';
+    walkBtn.style.height = '60px';
+    walkBtn.style.border = 'none';
+    walkBtn.style.borderRadius = '50%';
+    walkBtn.style.zIndex = '9999';
+    walkBtn.style.backgroundColor = 'orange';
+
+    let iconUrl = chrome.runtime.getURL('icons/start-button.png');
+    walkBtn.style.backgroundImage = `url("${iconUrl}")`;
+    walkBtn.style.backgroundSize = '50%';
+    walkBtn.style.backgroundRepeat = 'no-repeat';
+    walkBtn.style.backgroundPosition = 'center';
+
+    document.body.appendChild(walkBtn);
+
+    walkBtn.addEventListener('click',
+      function(){
+        startUsagiWalk();
+      }
+    );
+  }
+
   // 停止動畫按鈕
   if (!document.getElementById("stop-button")) {
       const stopBtn = document.createElement('button');
@@ -67,6 +98,7 @@ function createButtons() {
           document.querySelectorAll(".naruto-animation").forEach(img => img.remove());
       });
   }
+
 }
 
 // 創建火影忍者動畫
@@ -116,4 +148,69 @@ function startUsagiGIF(){
 
     document.body.appendChild(usagi);
   }
+}
+
+
+//  創建Usagi走路動畫
+function startUsagiWalk(){
+  try{
+    const usagi = document.createElement('img');
+    usagi.className = 'usagi-animation-w';
+    usagi.src = chrome.runtime.getURL('icons/usagi/shime34.png');
+    usagi.width = 64;
+    usagi.height = 64;
+    usagi.style.border = "none";
+    usagi.style.position = "fixed";
+    usagi.style.top = "210px";
+    usagi.style.left = "80%";     //從右邊開始
+    usagi.style.transform = "translateX(0%)"; //讓他移動
+    usagi.style.zIndex = '9999';  //確保物件在最上層
+    usagi.style.animation = 'usagi-walk 2s infinite linear';
+    
+    //  定義走路圖片組，用來交替顯示
+    let walkImages = [
+      chrome.runtime.getURL('icons/usagi/shime34.png'),
+      chrome.runtime.getURL('icons/usagi/shime35.png')
+    ];
+
+    let currentImageIndex = 0;
+
+    //  設定計時器切換圖片
+    let interval = setInterval(()=>{
+      usagi.src = walkImages[currentImageIndex];
+      currentImageIndex = (currentImageIndex +1)% walkImages.length;  //循環切換圖片
+    },50);
+
+    //  動畫結束時移除元素
+    usagi.addEventListener('animationend', () => {
+      usagi.remove();
+    });
+    document.body.appendChild(usagi);
+  }catch(error){
+    console.log("Error in startUsagiWalk:", error);
+  }
+
+}
+
+//  usagi walk 的css
+if(!document.getElementById('usagi-style')){
+  const w_style = document.createElement('style');
+  w_style.id = 'usagi-style';
+  w_style.innerHTML =`
+    @keyframes usagi-walk {
+      0% {
+        left: 100%;
+      }
+      
+      100% {
+        right: -128px;
+      }
+    }
+    .usagi-animation-w{
+      z-index:9999;
+    }    
+  `;
+
+  document.head.appendChild(w_style);
+
 }
