@@ -23,8 +23,7 @@
     {
         "resources": [
           "icons/sharingan.png",
-          "icons/stop-button.png",
-          "scripts/embed.js"
+          "icons/stop-button.png"
         ],
         "matches": ["<all_urls>"]
     }

@@ -1,12 +1,12 @@
 // 確保按鈕只創建一次，但動畫可重複觸發
 if (!window.hasNarutoScriptLoaded) {
   window.hasNarutoScriptLoaded = true; 
-  createNarutoButtons();
+  createButtons();
   
 }
 
 // 創建按鈕
-function createNarutoButtons() {
+function createButtons() {
   //  開始動畫按鈕
   if (!document.getElementById("naruto-button")) {
       const button = document.createElement('button');
@@ -102,16 +102,18 @@ if (!document.getElementById("naruto-style")) {
 
 //  創建 Usagi GIF  (嵌入)
 function startUsagiGIF(){
-  const usagi = document.createElement('iframe');
-  usagi.id = "usagiGIF";
-  usagi.src = "https://tenor.com/embed/17442942489029498034";
-  usagi.width = 128;
-  usagi.height = 128;
-  usagi.style.border = "none";
-  usagi.style.position = "absolute";
-  usagi.style.top = "200px";
-  usagi.style.left = "70%";
-  usagi.style.transform = "translate(-50%, -50%)";
+  if(!document.getElementById('usagiGIF')){
+    const usagi = document.createElement('img');
+    usagi.id = "usagiGIF";
+    usagi.src = "https://media.tenor.com/8hHHxvAr1LIAAAAj/chiikawa-usagi.gif";
+    usagi.width = 128;
+    usagi.height = 128;
+    usagi.style.border = "none";
+    usagi.style.position = "absolute";
+    usagi.style.top = "200px";
+    usagi.style.left = "70%";
+    usagi.style.transform = "translate(-50%, -50%)";
 
-  document.body.appendChild(usagi);
+    document.body.appendChild(usagi);
+  }
 }
