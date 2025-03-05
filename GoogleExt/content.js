@@ -165,7 +165,7 @@ function startUsagiWalk(){
     usagi.style.left = "80%";     //從右邊開始
     usagi.style.transform = "translateX(0%)"; //讓他移動
     usagi.style.zIndex = '9999';  //確保物件在最上層
-    usagi.style.animation = 'usagi-walk 2s infinite linear';
+    usagi.style.animation = 'usagi-walk 6s infinite linear';
     
     //  定義走路圖片組，用來交替顯示
     let walkImages = [
@@ -200,10 +200,12 @@ if(!document.getElementById('usagi-style')){
     @keyframes usagi-walk {
       0% {
         left: 100%;
+        right:0%;
       }
       
       100% {
-        right: -128px;
+        left: 0%;
+        right: 100%;
       }
     }
     .usagi-animation-w{
