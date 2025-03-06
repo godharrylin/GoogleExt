@@ -17,7 +17,7 @@ function createButtons() {
       button.style.justifyContent = 'center';  // 水平居中
 
       button.id = "gif-button";
-      button.style.position = 'absolute';
+      button.style.position = 'fixed';
       button.style.top = '150px';
       button.style.left = '50%';
       button.style.width = '60px';
@@ -42,7 +42,7 @@ function createButtons() {
     const walkBtn = document.createElement('button');
     walkBtn.id = 'usagi-button';
     walkBtn.cursor = 'pointer';
-    walkBtn.style.position = 'absolute';
+    walkBtn.style.position = 'fixed';
     walkBtn.style.top = '150px';
     walkBtn.style.left = '40%';
     walkBtn.style.transform = 'translateX(-50%)';
@@ -72,7 +72,7 @@ function createButtons() {
   if (!document.getElementById("stop-button")) {
       const stopBtn = document.createElement('button');
       stopBtn.id = "stop-button";
-      stopBtn.style.position = 'absolute';
+      stopBtn.style.position = 'fixed';
       stopBtn.style.top = '150px';
       stopBtn.style.left = '60%';
       stopBtn.style.transform = 'translateX(-50%)';
