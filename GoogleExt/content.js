@@ -7,49 +7,48 @@ if (!window.hasNarutoScriptLoaded) {
 
 // 創建按鈕
 function createButtons() {
-  //  開始動畫按鈕
-  if (!document.getElementById("gif-button")) {
-      const button = document.createElement('button');
-      button.innerText = "Trigger";
+  // 創建一個容器來包含按鈕
+  if(!document.getElementById("buttonContainer")){
+    const buttonContainer = document.createElement('div');
+    buttonContainer.id = 'buttonContainer';
+    buttonContainer.style.position = 'fixed';
+    buttonContainer.style.bottom = '5vh';  // 你可以調整這裡來改變容器的垂直位置
+    buttonContainer.style.right = '20px';
+    buttonContainer.style.transform = 'translateX(-50%)';
+    
+    
+    buttonContainer.style.display = 'flex';  // 使用 Flexbox 排列按鈕
+    buttonContainer.style.flexDirection = 'column';  // 垂直排列
+    buttonContainer.style.justifyContent = 'flex-start';
+    buttonContainer.style.alignItems = 'center';  // 將按鈕在容器內水平居中
+    buttonContainer.style.gap = '15px';  // 設置按鈕之間的固定間距
 
-      button.style.display = 'flex';
-      button.style.alignItems = 'center';  // 垂直居中
-      button.style.justifyContent = 'center';  // 水平居中
+    
+    
+    // size
+    buttonContainer.style.width = '70px';
+    buttonContainer.style.height = '220px';
+    buttonContainer.style.padding = 0;
+    // buttonContainer.style.backgroundColor = 'black';
 
-      button.id = "gif-button";
-      button.style.position = 'fixed';
-      button.style.top = '150px';
-      button.style.left = '50%';
-      button.style.width = '60px';
-      button.style.height = '60px';
-      button.style.transform = 'translateX(-50%)';
-      button.style.padding = '10px';
-      button.style.fontSize = '16px';
-      button.style.cursor = 'pointer';
-      button.style.backgroundColor = 'orange';
-      button.style.border = 'none';
-      button.style.borderRadius = '50%';
-      button.style.zIndex = '9999';
-
-      document.body.appendChild(button);
-      button.addEventListener('click', function() {
-          startUsagiGIF();
-      });
+    document.body.appendChild(buttonContainer);
   }
+
+
+
 
   //  Usagi走路按鈕
   if(!document.getElementById("usagi-button")){
     const walkBtn = document.createElement('button');
     walkBtn.id = 'usagi-button';
-    walkBtn.cursor = 'pointer';
-    walkBtn.style.position = 'fixed';
-    walkBtn.style.top = '150px';
-    walkBtn.style.left = '40%';
-    walkBtn.style.transform = 'translateX(-50%)';
+    walkBtn.style.cursor = 'pointer';
+    //  size
     walkBtn.style.width = '60px';
     walkBtn.style.height = '60px';
+    //  shape
     walkBtn.style.border = 'none';
     walkBtn.style.borderRadius = '50%';
+
     walkBtn.style.zIndex = '9999';
     walkBtn.style.backgroundColor = 'orange';
 
@@ -59,28 +58,50 @@ function createButtons() {
     walkBtn.style.backgroundRepeat = 'no-repeat';
     walkBtn.style.backgroundPosition = 'center';
 
-    document.body.appendChild(walkBtn);
+    buttonContainer.appendChild(walkBtn);
 
     walkBtn.addEventListener('click',
       function(){
         startUsagiWalk();
       }
     );
+  } 
+  
+  // 開始動畫按鈕
+  if (!document.getElementById("gif-button")) {
+      const button = document.createElement('button');
+      button.id = "gif-button";
+      button.innerText = "Trigger";
+      //  size
+      button.style.width = '60px';
+      button.style.height = '60px';
+      //  shape 
+      button.style.border = 'none';
+      button.style.borderRadius = '50%';
+
+      button.style.fontSize = '16px';
+      button.style.cursor = 'pointer';
+      button.style.backgroundColor = 'orange';
+      button.style.zIndex = '9999';
+      button.style.textAlign = 'center';
+      
+      buttonContainer.appendChild(button);
+      button.addEventListener('click', function() {
+          startUsagiGIF();
+      });
   }
 
-  // 停止動畫按鈕
+  //  停止動畫按鈕
   if (!document.getElementById("stop-button")) {
       const stopBtn = document.createElement('button');
       stopBtn.id = "stop-button";
-      stopBtn.style.position = 'fixed';
-      stopBtn.style.top = '150px';
-      stopBtn.style.left = '60%';
-      stopBtn.style.transform = 'translateX(-50%)';
+      stopBtn.style.cursor = 'pointer';
+      //  shape & size
       stopBtn.style.width = '60px';
       stopBtn.style.height = '60px';
       stopBtn.style.border = 'none';
       stopBtn.style.borderRadius = '50%';
-      stopBtn.style.cursor = 'pointer';
+
       stopBtn.style.zIndex = '9999';
       stopBtn.style.backgroundColor = 'orange';
 
@@ -90,7 +111,7 @@ function createButtons() {
       stopBtn.style.backgroundRepeat = 'no-repeat';
       stopBtn.style.backgroundPosition = 'center';
 
-      document.body.appendChild(stopBtn);
+      buttonContainer.appendChild(stopBtn);
 
       // 移除所有動畫
       stopBtn.addEventListener("click", function() {
