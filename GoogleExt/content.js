@@ -115,7 +115,7 @@ function createButtons() {
 
       // 移除所有動畫
       stopBtn.addEventListener("click", function() {
-          document.querySelectorAll(".usagi-animation-w").forEach(img => img.remove());
+          document.querySelectorAll(".usagi-animation-w").forEach(img => { clearInterval(img.walkinterval); img.remove();});
       });
   }
 
@@ -165,14 +165,18 @@ function startUsagiWalk(){
     let currentImageIndex = 0;
 
     //  設定計時器切換圖片
-    let interval = setInterval(()=>{
+    let walkinterval = setInterval(()=>{
       usagi.src = walkImages[currentImageIndex];
       currentImageIndex = (currentImageIndex +1)% walkImages.length;  //循環切換圖片
     },50);
 
+    // 把計時器 ID 變數儲存到 usagi 元素上
+    usagi.walkinterval = walkinterval;
+
     //  動畫結束時移除元素
     usagi.addEventListener('animationend', () => {
       usagi.remove();
+      clearInterval(walkinterval);  //  停止計時器
     });
     document.body.appendChild(usagi);
   }catch(error){
